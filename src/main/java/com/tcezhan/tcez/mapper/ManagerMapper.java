@@ -11,6 +11,9 @@ public interface ManagerMapper {
     @Select("select * from manager where id = #{id}")
     public Manager findManagerById(Integer id);
 
+    @Select("select * from manager where user_name=#{userName}")
+    public Manager findManagerByName(String userName);
+
     @Select("select * from manager")
     public List<Manager> findManager();
 

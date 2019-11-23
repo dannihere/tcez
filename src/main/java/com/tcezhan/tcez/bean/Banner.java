@@ -10,4 +10,5 @@ public class Banner {
     private String title;
     private String descripriton;
     private String img;
+    private Integer display;
 }
