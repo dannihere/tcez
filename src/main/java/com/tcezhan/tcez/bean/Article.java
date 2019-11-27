@@ -3,7 +3,6 @@ package com.tcezhan.tcez.bean;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
 @Data
@@ -15,6 +14,7 @@ public class Article {
     private String img;
     private Integer type;
     private String text;
+    private Integer display;
     private Date uploadTime;
     private Date updateTime;
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface BannerMapper {
 
+//    @Select("select * from banner where display = #{}")
+
     @Select("select * from banner where id = #{id}")
     public Banner findBannerById(Integer id);
 

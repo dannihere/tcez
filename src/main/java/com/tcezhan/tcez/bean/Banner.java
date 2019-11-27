@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Banner {
     private Integer id;
     private String title;
-    private String descripriton;
+    private String description;
     private String img;
     private Integer display;
 }
