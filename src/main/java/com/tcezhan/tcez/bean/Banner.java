@@ -12,6 +12,17 @@ public class Banner {
     private String img;
     private Integer display;
 
+    @Override
+    public String toString() {
+        return "Banner{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
+                ", display=" + display +
+                '}';
+    }
+
     public String getDescription() {
         return description;
     }
