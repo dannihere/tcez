@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-public interface AriticleMapper {
+public interface ArticleMapper {
 
     @Select("select * from article where id = #{id}")
     public Article findArticleById(Integer id);

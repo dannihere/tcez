@@ -21,6 +21,9 @@ public class ManagerController {
         if (manager.getPassword()!=password){
             return "密码或账号错误";
         }
+
+        //TODO
+        //会话用户信息
         return "/main";
     }
 

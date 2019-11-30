@@ -30,6 +30,9 @@ public class UserController {
 //        if (bindingResult.hasErrors()){
 //            return bindingResult.getFieldError().getDefaultMessage();
 //        }
+        //TODO
+        //防止重复添加
+
          Integer result = userService.insertUser(user);
         return result;
     }

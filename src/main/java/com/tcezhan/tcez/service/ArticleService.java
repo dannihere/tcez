@@ -4,7 +4,7 @@ import com.tcezhan.tcez.bean.Article;
 
 import java.util.List;
 
-public interface AriticleService {
+public interface ArticleService {
     public Article findArticleById(Integer id);
 
     public List<Article> findArticle();
