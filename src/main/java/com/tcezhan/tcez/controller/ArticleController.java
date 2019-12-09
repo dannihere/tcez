@@ -62,7 +62,7 @@ public class ArticleController {
         return articleService.insertArticle(article);
     }
 
-    @PostMapping("/article")
+    @PutMapping("/article")
     public int updateArticle(Article article) {
 
         article.setText(HtmlUtils.htmlEscapeHex(article.getText()));

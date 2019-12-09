@@ -38,7 +38,8 @@ public class ManagerController {
     }
 
     @PostMapping("/manager")
-    public Integer insertManager(Manager manager){
+    public Integer insertManager(@RequestBody Manager manager){
+        System.out.printf(manager.toString());
         Integer result=managerService.insertManager(manager);
         return result;
     }

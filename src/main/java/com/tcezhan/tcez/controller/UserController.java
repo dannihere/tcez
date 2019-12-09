@@ -1,8 +1,10 @@
 package com.tcezhan.tcez.controller;
 
 
+import com.tcezhan.tcez.VO.ResultVO;
 import com.tcezhan.tcez.bean.User;
 import com.tcezhan.tcez.service.UserService;
+import com.tcezhan.tcez.utils.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +18,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/users")
-    public List<User> findUser(){
-        return userService.findUser();
+    public ResultVO<List<User>> findUser(){
+        return ResultVOUtil.success(userService.findUser());
     }
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable("id") Integer id){
-        return userService.findUserById(id);
+    public ResultVO<User> getUserById(@PathVariable("id") Integer id){
+        return ResultVOUtil.success(userService.findUserById(id));
     }
 
     @PostMapping("/user")

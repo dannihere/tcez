@@ -4,6 +4,7 @@ import com.tcezhan.tcez.bean.Manager;
 import com.tcezhan.tcez.mapper.ManagerMapper;
 import com.tcezhan.tcez.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,13 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public int insertManager(Manager manager) {
+        //用户名存在，返回错误
+        if (managerMapper.findManagerByName(manager.getName())!=null){
+            return -1;
+        }
+        //通过BCryptPasswordEncoder中的encode方法对密码进行处理。
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        manager.setPassword(encoder.encode(manager.getPassword()));
         return managerMapper.insertManager(manager);
     }
 

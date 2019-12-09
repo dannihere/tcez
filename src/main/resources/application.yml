@@ -50,3 +50,5 @@ mybatis:
 logging:
   level:
     com.tcezhan.tcez.mapper: debug
+server:
+  port: 8090
