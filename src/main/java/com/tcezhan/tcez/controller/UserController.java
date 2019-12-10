@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -28,26 +30,28 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public Integer insertUser(User user){
+    public ResultVO<Integer> insertUser(User user){
 //        if (bindingResult.hasErrors()){
 //            return bindingResult.getFieldError().getDefaultMessage();
 //        }
         //TODO
         //防止重复添加
 
-         Integer result = userService.insertUser(user);
-        return result;
+        Integer result = userService.insertUser(user);
+        Map<String,Integer> map = new HashMap<>();
+        map.put("id",user.getId());
+        return ResultVOUtil.success(map);
     }
 
     @PutMapping("/user")
-    public Integer update(User user){
+    public ResultVO update(User user){
         Integer result = userService.update(user);
-        return result;
+        return ResultVOUtil.success();
     }
 
     @DeleteMapping("/user/{id}")
-    public Integer deleteUserById(Integer id){
+    public ResultVO deleteUserById(Integer id){
         Integer result = userService.deleteUserById(id);
-        return result;
+        return ResultVOUtil.success();
     }
 }

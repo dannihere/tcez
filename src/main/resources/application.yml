@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: Tcez-2019
-    url: jdbc:mysql://39.107.44.133:3306/tcez?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://39.107.44.133:3306/tcez?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5

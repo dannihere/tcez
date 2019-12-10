@@ -1,8 +1,10 @@
 package com.tcezhan.tcez.controller;
 
 
+import com.tcezhan.tcez.VO.ResultVO;
 import com.tcezhan.tcez.bean.Comment;
 import com.tcezhan.tcez.service.CommentService;
+import com.tcezhan.tcez.utils.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,30 +22,30 @@ public class CommentController {
 
     /*查询所有*/
     @GetMapping(value = "comments")
-    public List<Comment> findComment(){
-        return commentService.findComment();
+    public ResultVO<List<Comment>> findComment(){
+        return ResultVOUtil.success(commentService.findComment());
     }
 
     /*查询某个*/
     @GetMapping("/comment/{id}")
-    public Comment findCommentById(@PathVariable("id") Integer id){
-        return commentService.findCommentById(id);
+    public ResultVO<Comment> findCommentById(@PathVariable("id") Integer id){
+        return ResultVOUtil.success(commentService.findCommentById(id));
     }
 
     /*@删除comment*/
     @DeleteMapping("/comment/{id}")
-    public Integer deleteComment(@PathVariable("id")Integer id){
-        return commentService.deleteComment(id);
+    public ResultVO deleteComment(@PathVariable("id")Integer id){
+        return ResultVOUtil.success();
     }
 
     /*添加comment*/
     @PostMapping("/comment")
-    public Integer insertComment(Comment comment, MultipartFile file){
+    public ResultVO insertComment(Comment comment, MultipartFile file){
         //System.out.println("aaaaaaaaaaaaaaaa");
         String filename = file.getOriginalFilename();
         String suffix = filename.substring(filename.lastIndexOf("."));
         if(!suffix.equals(".png") && !suffix.equals(".jpg")){
-            return 401;
+            return ResultVOUtil.error(401,"图片格式错误");
         }
         comment.setAvatar(filename);
         comment.setUploadTime(new Date());
@@ -59,16 +61,16 @@ public class CommentController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return commentService.insertComment(comment);
+        return ResultVOUtil.success();
     }
 
     /*修改comment*/
     @PutMapping("/comment")
-    public Integer updateComment(Comment comment,MultipartFile file){
+    public ResultVO updateComment(Comment comment,MultipartFile file){
         String filename = file.getOriginalFilename();
         String suffix = filename.substring(filename.lastIndexOf("."));
         if(!suffix.equals(".png") && !suffix.equals(".jpg")){
-            return 401;
+            return ResultVOUtil.error(401,"图片格式错误");
         }
         comment.setAvatar(filename);
         comment.setUpdateTime(new Date());
@@ -82,7 +84,7 @@ public class CommentController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return commentService.updateComment(comment);
+        return ResultVOUtil.success();
     }
 
     @GetMapping("/aa")

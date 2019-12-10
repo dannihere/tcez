@@ -1,7 +1,9 @@
 package com.tcezhan.tcez.controller;
 
+import com.tcezhan.tcez.VO.ResultVO;
 import com.tcezhan.tcez.bean.Manager;
 import com.tcezhan.tcez.service.ManagerService;
+import com.tcezhan.tcez.utils.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -28,32 +30,32 @@ public class ManagerController {
     }
 
     @GetMapping("/managers")
-    public List<Manager> findManager(){
-        return managerService.findManager();
+    public ResultVO<List<Manager>>  findManager(){
+        return ResultVOUtil.success(managerService.findManager());
     }
 
     @GetMapping("/manager/{id}")
-    public Manager findManagerById(@PathVariable("id") Integer id){
-        return managerService.findManagerById(id);
+    public ResultVO<Manager> findManagerById(@PathVariable("id") Integer id){
+        return ResultVOUtil.success(managerService.findManagerById(id));
     }
 
     @PostMapping("/manager")
-    public Integer insertManager(@RequestBody Manager manager){
+    public ResultVO insertManager(@RequestBody Manager manager){
         System.out.printf(manager.toString());
         Integer result=managerService.insertManager(manager);
-        return result;
+        return ResultVOUtil.success();
     }
 
     @PutMapping("/manager")
-    public Integer updateManager(Manager manager){
+    public ResultVO updateManager(Manager manager){
         Integer result = managerService.updateManager(manager);
-        return result;
+        return ResultVOUtil.success();
     }
 
     @DeleteMapping("/manager/{id}")
-    public Integer deleteManager(@PathVariable("id") Integer id){
+    public ResultVO deleteManager(@PathVariable("id") Integer id){
         Integer result = managerService.deleteManager(id);
-        return result;
+        return ResultVOUtil.success();
     }
 
 }
