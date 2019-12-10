@@ -24,5 +24,7 @@ public interface BannerMapper {
 
     @Update("update banner set title=#{title},description=#{description},img=#{img},display=#{display} where id = #{id}")
     public int updateBanner(Banner banner);
-    
+
+    @Select("select * from banner where display = 1")
+    public List<Banner> findOnBanner();
 }

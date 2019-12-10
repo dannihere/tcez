@@ -10,12 +10,18 @@ import java.util.List;
 
 @Service
 public class BannerServiceImpl implements BannerService {
+
     @Autowired
     BannerMapper bannerMapper;
 
     @Override
-    public Banner findBannerById(Integer id) {
-        return bannerMapper.findBannerById(id);
+    public int insertBanner(Banner banner) {
+        return bannerMapper.insertBanner(banner);
+    }
+
+    @Override
+    public List<Banner> findOnBanner() {
+        return bannerMapper.findOnBanner();
     }
 
     @Override
@@ -24,13 +30,13 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public int deleteBanner(Integer id) {
-        return bannerMapper.deleteBanner(id);
+    public Banner findBannerById(Integer id) {
+        return bannerMapper.findBannerById(id);
     }
 
     @Override
-    public int insertBanner(Banner banner) {
-        return bannerMapper.insertBanner(banner);
+    public Integer deleteBanner(Integer id) {
+        return bannerMapper.deleteBanner(id);
     }
 
     @Override

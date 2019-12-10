@@ -18,9 +18,9 @@ public interface CommentMapper {
     public int deleteComment(Integer id);
 
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into comment(id,avatar,comment_1,comment_2,display,upload_time,update_time) values(#{id},#{avatar},#{comment1},#{comment2},#{display},#{uploadTime},#{updateTime})")
+    @Insert("insert into comment(avatar,comment_1,comment_2,display,upload_time,update_time) values(#{avatar},#{comment_1},#{comment_2},#{display},#{uploadTime},#{updateTime})")
     public int insertComment(Comment comment);
 
-    @Update("update comment set avatar=#{avatar},comment_1=#{comment1},comment_2=#{comment2},display=#{display},upload_time=#{uploadTime},update_time=#{updateTime} where id = #{id}")
+    @Update("update comment set avatar=#{avatar},comment_1=#{comment_1},comment_2=#{comment_2},display=#{display},upload_time=#{uploadTime},update_time=#{updateTime} where id = #{id}")
     public int updateComment(Comment comment);
 }
