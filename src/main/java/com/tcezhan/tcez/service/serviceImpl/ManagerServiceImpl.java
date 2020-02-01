@@ -4,13 +4,20 @@ import com.tcezhan.tcez.bean.Manager;
 import com.tcezhan.tcez.mapper.ManagerMapper;
 import com.tcezhan.tcez.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     ManagerMapper managerMapper;
@@ -50,5 +57,18 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public int updateManager(Manager manager) {
         return managerMapper.updateManager(manager);
+    }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Manager manager = managerMapper.findManagerByName(username);
+
+        if (manager == null){
+            throw new UsernameNotFoundException(username);
+        }
+
+        return new Manager(username,passwordEncoder.encode(manager.getPassword()), AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }

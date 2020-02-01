@@ -5,7 +5,11 @@ import lombok.Getter;
 @Getter
 public enum ResultEnum {
     USER_NOT_EXIT(1,"用户不存在"),
-    PASSWORD_WRONG(2,"密码错误")
+
+    PASSWORD_WRONG(2,"密码错误"),
+
+    LOGINOUT_SUCCESS(3,"登出成功")
+
     ;
     private Integer code;
 

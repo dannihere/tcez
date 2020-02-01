@@ -13,21 +13,21 @@ public class ManagerController {
 
     @Autowired
     ManagerService managerService;
-
-    @PostMapping("/login")
-    public String findManagerByName(String userName,String password){
-        Manager manager=managerService.findManagerByName(userName);
-        if (manager==null){
-            return "账号不存在";
-        }
-        if (manager.getPassword()!=password){
-            return "密码或账号错误";
-        }
-
-        //TODO
-        //会话用户信息
-        return "/main";
-    }
+//
+//    @PostMapping("/login")
+//    public String findManagerByName(String userName,String password){
+//        Manager manager=managerService.findManagerByName(userName);
+//        if (manager==null){
+//            return "账号不存在";
+//        }
+//        if (manager.getPassword()!=password){
+//            return "密码或账号错误";
+//        }
+//
+//        //TODO
+//        //会话用户信息
+//        return "/main";
+//    }
 
     @GetMapping("/managers")
     public ResultVO<List<Manager>>  findManager(){

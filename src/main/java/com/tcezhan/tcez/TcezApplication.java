@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @MapperScan(value = "com.tcezhan.tcez.mapper")
 @SpringBootApplication
+@EnableCaching
 public class TcezApplication extends WebMvcConfigurationSupport {
 
     public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package com.tcezhan.tcez.service;
 
 import com.tcezhan.tcez.bean.User;
+
 import java.util.List;
 
 public interface UserService {
